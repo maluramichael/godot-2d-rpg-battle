@@ -1,0 +1,38 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/images/lizard_f_idle_anim_f0.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/lizard_f_idle_anim_f1.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/lizard_f_idle_anim_f2.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/lizard_f_idle_anim_f3.png" type="Texture" id=4]
+[ext_resource path="res://components/HealthBar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://components/Enemy.gd" type="Script" id=6]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 9 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Rect" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, -10 )
+shape = SubResource( 2 )
+
+[node name="Idle" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -14 )
+frames = SubResource( 3 )
+frame = 2
+playing = true
+
+[node name="HealthBar" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, -24 )
+[connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
