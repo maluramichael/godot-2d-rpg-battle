@@ -1,13 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/ui/health.png" type="Texture" id=1]
+[ext_resource path="res://assets/ui/health_bar_full.png" type="Texture" id=1]
 [ext_resource path="res://components/HealthBar.gd" type="Script" id=2]
+[ext_resource path="res://assets/ui/health_bar_empty.png" type="Texture" id=3]
 
-[node name="HealthBar" type="Node2D"]
+[node name="HealthBar" type="TextureProgress"]
+margin_top = -3.0
+margin_right = 15.0
+step = 1.0
+value = 50.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 1 )
 script = ExtResource( 2 )
-
-[node name="Bar" type="Sprite" parent="."]
-texture = ExtResource( 1 )
-vframes = 10
-region_enabled = true
-region_rect = Rect2( 0, 0, 16, 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

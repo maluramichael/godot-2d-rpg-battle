@@ -7,7 +7,7 @@
 [ext_resource path="res://components/HealthBar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/Player.gd" type="Script" id=6]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 4 ), ExtResource( 2 ) ],
 "loop": true,
@@ -19,10 +19,15 @@ animations = [ {
 script = ExtResource( 6 )
 
 [node name="HealthBar" parent="." instance=ExtResource( 5 )]
-position = Vector2( 0, -24 )
+margin_left = -8.0
+margin_top = -24.7493
+margin_right = 7.0
+margin_bottom = -21.7493
 
 [node name="Idle" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -14 )
-frames = SubResource( 2 )
-frame = 2
+frames = SubResource( 1 )
+frame = 3
 playing = true
+
+[node name="Tween" type="Tween" parent="."]

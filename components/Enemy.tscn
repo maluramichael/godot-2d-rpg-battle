@@ -7,10 +7,10 @@
 [ext_resource path="res://components/HealthBar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/Enemy.gd" type="Script" id=6]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 9 )
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
@@ -25,14 +25,21 @@ script = ExtResource( 6 )
 
 [node name="Rect" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0, -10 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Idle" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -14 )
-frames = SubResource( 3 )
-frame = 2
+frames = SubResource( 2 )
+frame = 3
 playing = true
 
 [node name="HealthBar" parent="." instance=ExtResource( 5 )]
-position = Vector2( 0, -24 )
+margin_left = -8.0
+margin_top = -23.0
+margin_right = 7.0
+margin_bottom = -20.0
+
+[node name="DropInTween" type="Tween" parent="."]
+
+[node name="HitTween" type="Tween" parent="."]
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
